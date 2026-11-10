@@ -1,0 +1,26 @@
+title: "🙌 [Show & Tell]: "
+labels: ["show-and-tell", "community"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Show off something cool you built or achieved using our projects (e.g. container size reductions from Rover-Slim, stock analyses from Market-Rover, browser perception with GoA Rover)!
+  - type: input
+    id: project
+    attributes:
+      label: 🚀 Project / Tool Used
+      placeholder: "e.g. Rover-Slim, GoA_Rover, Market-Rover, RoverID"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 📝 What did you build or accomplish?
+      description: Share your results, metrics, benchmarks, or demo.
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: 🔗 Links or Screenshots
+      description: Repositories, blogs, images, or demos.

@@ -1,0 +1,49 @@
+name: Reusable Contributor PR Acknowledgement
+
+on:
+  workflow_call:
+    inputs:
+      project_name:
+        description: "Display name of the repository or project"
+        required: false
+        type: string
+        default: ""
+      custom_message:
+        description: "Optional custom welcome message override"
+        required: false
+        type: string
+        default: ""
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  acknowledge:
+    name: Greet External Contributor
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post Acknowledgement Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const author = context.payload.pull_request.user.login;
+            const repoOwner = context.repo.owner;
+            const repoName = context.repo.repo;
+            const displayName = "${{ inputs.project_name }}" || repoName;
+
+            // Skip greeting if PR was opened by the repository owner or an automated bot
+            if (author === repoOwner || context.payload.pull_request.user.type === 'Bot' || author.includes('[bot]')) {
+              console.log(`Skipping acknowledgement for owner/bot: ${author}`);
+              return;
+            }
+
+            const customMsg = "${{ inputs.custom_message }}".trim();
+            const welcomeBody = customMsg || `Thanks for opening this pull request, @${author}! 👋\n\nWe really appreciate your contribution to **${displayName}**. Our team will look into your changes and review them as soon as possible.\n\nIn the meantime, please make sure all CI checks pass cleanly. If you have any notes or context for reviewers, feel free to add them in the thread below!`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: welcomeBody
+            });

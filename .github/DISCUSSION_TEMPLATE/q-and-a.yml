@@ -1,0 +1,26 @@
+title: "🙋 [Q&A]: "
+labels: ["question", "help wanted"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Need help setting up a project, integrating an API, or troubleshooting a local issue? Ask here!
+  - type: input
+    id: project
+    attributes:
+      label: 📦 Project
+      placeholder: "e.g. rover-slim, Market-Rover, Research_Rover"
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: ❓ Your Question or Problem
+      description: What are you trying to accomplish, and where are you encountering difficulty?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 💻 Environment & Context
+      description: OS, runtime versions, CLI commands executed, or error messages.

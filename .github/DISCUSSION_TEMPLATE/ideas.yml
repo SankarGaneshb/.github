@@ -1,0 +1,26 @@
+title: "💡 [Idea / RFC]: "
+labels: ["ideas", "rfc"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea or architectural suggestion? Share your concept with the community before formalizing it into a tracked issue or PR!
+  - type: textarea
+    id: problem
+    attributes:
+      label: 💡 What problem does this solve?
+      description: Describe the motivation or pain point.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 🛠️ Proposed Solution or Design
+      description: Outline your proposal, architecture, or workflow.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 🔄 Alternatives Considered
+      description: What other approaches or workarounds exist?
