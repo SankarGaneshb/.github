@@ -1,0 +1,9 @@
+{
+  "name": "Contributor PR Acknowledgement",
+  "description": "Automatically greets external contributors on new pull requests while ignoring the repository owner and automated bots.",
+  "iconName": "heart",
+  "categories": [
+    "Community",
+    "Automation"
+  ]
+}
